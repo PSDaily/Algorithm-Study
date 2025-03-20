@@ -1,5 +1,6 @@
 ## 🌤️ 매일 1문제
-<img width="515" alt="스크린샷 2025-03-18 오후 9 30 30" src="https://github.com/user-attachments/assets/141cbf8e-0d4a-4d31-9c72-31d42309ce83" />
+![KakaoTalk_Photo_2025-03-20-11-48-46](https://github.com/user-attachments/assets/1b23a32b-b15b-4e44-9749-4cac774b1054)
+
 
 <br/>
 
