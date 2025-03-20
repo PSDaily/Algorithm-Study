@@ -1,63 +1,65 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Stack;
+import java.util.StringTokenizer;
+
+class Top {
+    int index;
+    int num;
+
+    Top(int index, int num) {
+        this.index = index;
+        this.num = num;
+    }
+}
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
 
-        int maxNum = Integer.parseInt(br.readLine());
-        int index = 0;
-        int count = 0;
-        Stack<Integer> stack = new Stack<Integer>();
-        List<String> results = new ArrayList<String>();
+        int count = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        while (count < maxNum) {
-            int inputNum = Integer.parseInt(br.readLine());
-            count++;
+        Stack<Top> stack = new Stack<>();
 
+        int num = 0;
 
-            if (inputNum > index) {
-                for (int i = index+1; i <= inputNum; i++) {
-                    stack.push(i);
-                    results.add("+\n");
-                }
+        for (int i = 1; i <= count; i++) {
+            num = Integer.parseInt(st.nextToken());
 
-                index = inputNum;
-                stack.pop();
-                results.add("-\n");
+            if (stack.isEmpty()) {
+                bw.write("0 ");
+                stack.push(new Top(i, num));
             }
-
             else {
-                if(stack.contains(inputNum)) {
-                    int temp;
-                    do{
-                        temp = stack.pop();
-                        results.add("-\n");
-                    } while(temp != inputNum);
-                }
+                while (true) {
+                    if (stack.isEmpty()) {
+                        bw.write("0 ");
+                        stack.push(new Top(i, num));
+                        break;
+                    }
 
-                else {
-                    bw.write("NO\n");
-                    results.removeAll(results);
-                    break;
+                    Top top = stack.peek();
+
+                    if (top.num > num) {
+                        bw.write(top.index + " ");
+                        stack.push(new Top(i, num));
+                        break;
+                    }
+                    else {
+                        stack.pop();
+                    }
                 }
             }
-
-
-
-
         }
-
-        for (String result : results) {
-            bw.write(result);
-        }
-
 
         bw.flush();
-        bw.close();
+        bw.flush();
     }
 }
 
