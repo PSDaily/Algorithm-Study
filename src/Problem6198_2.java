@@ -4,17 +4,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Stack;
-import java.util.StringTokenizer;
-
-class Building {
-    int start;
-    int height;
-
-    Building(int start, int height) {
-        this.start = start;
-        this.height = height;
-    }
-}
 
 public class Problem6198_2 {
     public static void main(String[] args) throws IOException {
@@ -22,43 +11,24 @@ public class Problem6198_2 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int count = Integer.parseInt(br.readLine());
-
-        Stack<Building> stack = new Stack<>();
-        Building highest = null;
-
         long sum = 0;
-        int height = Integer.parseInt(br.readLine());
+        Stack<Integer> stack = new Stack<>();
 
-        // 스택이 비어있으면 하나 채우고 맥스값 바꾸기
-        Building building = new Building(1, height);
-        stack.push(building);
-        highest = stack.peek();
+        for (int i = 0; i < count; i++) {
+            int height = Integer.parseInt(br.readLine());
 
-        for (int i = 1; i < count; i++) {
-            height = Integer.parseInt(br.readLine());
-            building = new Building(i+1, height);
-
-
-            if (highest.height > building.height) {
-                while (stack.peek().height <= building.height) {
-                    sum += i - stack.pop().start;
+            // 스택 내림차순으로 만들기
+            while (!stack.isEmpty()) {
+                if (stack.peek() <= height) {
+                    stack.pop();
                 }
+                else break;
             }
 
-            else {
-                highest = building;
-                while (!stack.isEmpty()) {
-                    sum += i - stack.pop().start;
-                }
-            }
 
-            stack.push(building);
+            sum += stack.size();
 
-        }
-
-        stack.pop();
-        while (!stack.isEmpty()) {
-            sum += count - stack.pop().start;
+            stack.push(height);
         }
 
         bw.write(String.valueOf(sum));
