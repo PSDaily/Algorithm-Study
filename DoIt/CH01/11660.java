@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class TestClass {
+public class Main {
     public static void main(String[] args) throws IOException {
 
         // 1. N, M, N*N 배열 입력
