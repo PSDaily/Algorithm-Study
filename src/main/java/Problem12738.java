@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Problem12738 {
 
     static int N;
     static int[] arr;
