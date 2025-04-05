@@ -1,7 +1,9 @@
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.PriorityQueue;
 
-public class Main{
+public class Problem1715 {
     static int N;
     // static int[] arr;
     static PriorityQueue<Integer> pq=new PriorityQueue<>();
