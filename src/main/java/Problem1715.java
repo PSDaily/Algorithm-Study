@@ -18,6 +18,7 @@ public class Problem1715 {
         {
             // arr[i] = Integer.valueOf(br.readLine());
             pq.offer(Integer.valueOf(br.readLine()));
+
         }
 
         int count=0;
