@@ -22,7 +22,7 @@ public class Problem10799 {
                 stack.push(ch);
             }
             else {
-                if (stack.peek() == '(' && temp != ')') {
+                if (temp != ')') {
                     stack.pop();
                     sum += stack.size();
                 }
