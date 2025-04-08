@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.PriorityQueue;
 
-public class Main {
+public class Problem2075 {
     static int N;
     static int[] maxIdx;
     static Long[][] darr;
