@@ -25,7 +25,7 @@ public class Problem2504 {
             }
 
             else if (ch == ')') {
-                if (!stack.isEmpty() || stack.peek() == '(') {
+                if (!stack.isEmpty() && stack.peek() == '(') {
                     stack.pop();
                     if (!stack.isEmpty() && stack.peek() == 'x') {
                         temp = num.pop() + 2;
@@ -39,17 +39,30 @@ public class Problem2504 {
                 }
                 else if (!stack.isEmpty() && stack.peek() == 'x') {
                     stack.pop();
-                    if(!stack.isEmpty() && stack.peek() == '(') {
-                        stack.pop();
-                        stack.push('x');
-                        temp = num.pop() * 2;
-                        num.push(temp);
+                    temp = num.pop();
+                    while (!stack.isEmpty() && stack.peek() != '(') {
+                        if (stack.peek() == 'x') {
+                            temp += num.pop();
+                            stack.pop();
+                        }
+                        else {
+                            bw.write("0");
+                            flag = true;
+                            break;
+                        }
                     }
-                    else {
+                    if (flag) {
+                        break;
+                    }
+                    else if (stack.isEmpty() || stack.peek() != '(') {
                         bw.write("0");
                         flag = true;
                         break;
                     }
+                    temp *= 2;
+                    stack.pop();
+                    stack.push('x');
+                    num.push(temp);
                 }
                 else {
                     bw.write("0");
@@ -59,7 +72,7 @@ public class Problem2504 {
             }
 
             else {
-                if (!stack.isEmpty() || stack.peek() == '[') {
+                if (!stack.isEmpty() && stack.peek() == '[') {
                     stack.pop();
                     if (!stack.isEmpty() && stack.peek() == 'x') {
                         temp = num.pop() + 3;
@@ -73,17 +86,30 @@ public class Problem2504 {
                 }
                 else if (!stack.isEmpty() && stack.peek() == 'x') {
                     stack.pop();
-                    if(!stack.isEmpty() && stack.peek() == '[') {
-                        stack.pop();
-                        stack.push('x');
-                        temp = num.pop() * 3;
-                        num.push(temp);
+                    temp = num.pop();
+                    while (!stack.isEmpty() && stack.peek() != '[') {
+                        if (stack.peek() == 'x') {
+                            temp += num.pop();
+                            stack.pop();
+                        }
+                        else {
+                            bw.write("0");
+                            flag = true;
+                            break;
+                        }
                     }
-                    else {
+                    if (flag) {
+                        break;
+                    }
+                    else if (stack.isEmpty() || stack.peek() != '[') {
                         bw.write("0");
                         flag = true;
                         break;
                     }
+                    temp *= 3;
+                    stack.pop();
+                    stack.push('x');
+                    num.push(temp);
                 }
                 else {
                     bw.write("0");
@@ -92,13 +118,32 @@ public class Problem2504 {
                 }
             }
         }
-        System.out.println(num);
 
-        if (stack.isEmpty() && !flag) {
+        if (!flag) {
+            if (!stack.isEmpty() && stack.peek() == 'x') {
+                stack.pop();
+                temp = num.pop();
+                while (!num.isEmpty()) {
+                    if (!stack.isEmpty() && stack.peek() == 'x') {
+                        temp += num.pop();
+                        stack.pop();
+                    }
+                    else {
+                        bw.write("0");
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    bw.write(String.valueOf(temp));
+                }
 
-        }
-        else {
-            bw.write("0");
+            }
+            else {
+                bw.write("0");
+                flag = true;
+            }
+
         }
 
         bw.flush();
