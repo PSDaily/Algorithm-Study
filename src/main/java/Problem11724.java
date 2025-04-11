@@ -1,8 +1,7 @@
-import java.sql.Array;
 import java.util.*;
 import java.io.*;
 
-public class Main{
+public class Problem11724 {
     static int N, M;
     //무방향 그래프
     static List<Integer>[] adjList;
@@ -54,29 +53,33 @@ public class Main{
             //bfs
             //initialize
             result++;
-            q.offer(stVertex);
-            visited[stVertex]=true;
-
-            while(!q.isEmpty())
-            {
-                //q.poll()
-                int v1 = q.poll();
-
-                //탐색
-                for(Integer v2: adjList[v1])
-                {
-                    //q.push
-                    if(!visited[v2])
-                    {
-                        q.offer(v2);
-                        visited[v2]=true;
-                    }
-                }
-            }
+            bfs(stVertex);
 
         }
 
         System.out.print(result);
 
+    }
+
+    private static void bfs(int stVertex) {
+        q.offer(stVertex);
+        visited[stVertex]=true;
+
+        while(!q.isEmpty())
+        {
+            //q.poll()
+            int v1 = q.poll();
+
+            //탐색
+            for(Integer v2: adjList[v1])
+            {
+                //q.push
+                if(!visited[v2])
+                {
+                    q.offer(v2);
+                    visited[v2]=true;
+                }
+            }
+        }
     }
 }
