@@ -1,7 +1,9 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
-import java.io.*;
 
-public class Main{
+public class Problem1260 {
     static int N, M, V;
     static List<Set<Integer>> adjList = new ArrayList<>();
     static boolean[] visited;
