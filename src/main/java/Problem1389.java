@@ -2,10 +2,13 @@
 //강호 세희 . 민호 - 민호 - 백준 - 선영 - 도현 - 세희 => 인원수 -1: result
 // 모든 사람과의 베이컨거리 합의 최소값
 //1:10,
-import java.util.*;
-import java.io.*;
 
-public class Main{
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Problem1389 {
 
     static int N, M; // N: 사람수, M: 엣지 수
     static List<List<Integer>> adjList = new ArrayList<>();
@@ -40,36 +43,12 @@ public class Main{
 
 
         //when
-        for(int i=1;i<N+1;i++)
-        {
-            int stVertex = i;
-
-            int sum=0;
-            // case1: i 이전 vertex
-            for (int j = i - 1; j >= 1; j--) {
-                sum += distArr[j][i];
-                distArr[i][j] = distArr[j][i];
-            }
-
-            // case2: i 이후 vertex
-            for (int j = i + 1; j < N + 1; j++) {
-                distArr[i][j] = bfs(stVertex, j);
-                sum += distArr[i][j];
-            }
-
-            bacon[i] = sum;
-        }
-
-        //then
-        // 베이컨거리 합이 최소인 사람. (& 번호가 최소인사람)
-
-        int min, idx=0;
-        min = Integer.MAX_VALUE;
-        for(int i=1;i<N+1;i++ )
-        {
-            if(bacon[i]<min)
-            {
-                min = bacon[i];
+        int min = Integer.MAX_VALUE;
+        int idx = 0;
+        for (int i = 1; i <= N; i++) {
+            int sum = bfs(i);
+            if (min > sum) {
+                min = sum;
                 idx = i;
             }
         }
@@ -77,23 +56,21 @@ public class Main{
         System.out.print(idx);
     }
 
-    static int bfs(int stVertex, int target)
+    static int bfs(int stVertex)
     {
+        int bacon = 0;
         // init
         Arrays.fill(visited, false);
         Queue<Integer> q = new LinkedList<>();
         visited[stVertex] = true;
         q.offer(stVertex);
 
-//        int dist = 0;
         int[] depth = new int[N + 1];
         depth[stVertex] = 0;
         while(!q.isEmpty())
         {
             // q.poll
             int v = q.poll();
-            if(v == target) return depth[v];
-
             // 탐색
             for(int u: adjList.get(v))
             {
@@ -101,12 +78,13 @@ public class Main{
                 {
                     visited[u] = true;
                     depth[u] = depth[v] + 1;
+                    bacon += depth[u];
                     q.offer(u);
                 }
             }
 
         }
-        return -1;
+        return bacon;
     }
 
 
