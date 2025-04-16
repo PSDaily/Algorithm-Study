@@ -22,12 +22,13 @@ public class Number1546 {
         }
 
         //최고점, 총합 저장하기 -> 배열 탐색
-        double max = scores[0];
-        for (int i = 1; i < N; i++){
-            if(scores[i] > max){
-                max = scores[i];
-            }
-        }
+//        double max = scores[0];
+//        for (int i = 1; i < N; i++){
+//            if(scores[i] > max){
+//                max = scores[i];
+//            }
+//        }
+        double max = Arrays.stream(scores).max().getAsDouble();
 
         //새로운 점수의 평균값 구하기
         double sum = 0;
