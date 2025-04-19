@@ -21,6 +21,7 @@ public class Problem1389 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer tokens = new StringTokenizer(br.readLine()," ");
 
+
         N = Integer.valueOf(tokens.nextToken());
         M = Integer.valueOf(tokens.nextToken());
         bacon = new int[N+1];

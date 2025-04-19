@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class Problem1707 {
     static int K;
     static int V, E;
     static int[] team; // 0 or 1
@@ -54,7 +54,7 @@ public class Main {
             }
             if(isBipartite) sb.append("YES\n");
         }
-            System.out.print(sb.toString());
+        System.out.print(sb.toString());
 
     }
 
