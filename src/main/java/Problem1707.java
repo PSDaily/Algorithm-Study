@@ -13,7 +13,6 @@ public class Problem1707 {
         StringBuilder sb = new StringBuilder();
         K = Integer.valueOf(br.readLine());
         int k = K;
-
         // TestCase 반복
         while (k-- > 0) {
             StringTokenizer tokens = new StringTokenizer(br.readLine(), " ");
