@@ -3,10 +3,13 @@
  중간 구슬이 불가능한 구슬 === 1. 자기보다 큰 구슬이 ((N+1)/2개 이상)
  2. 자기보다 작은 구슬이 ((N+1)/2개 이상)
  */
-import java.util.*;
-import java.io.*;
 
-public class Main{
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Problem2617 {
     static int N, M;
     static List<List<Integer>> biggerAdjList = new ArrayList<>();
     static List<List<Integer>> smallerAdjList = new ArrayList<>();
