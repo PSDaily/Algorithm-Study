@@ -1,7 +1,9 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
-import java.io.*;
 
-public class Main{
+public class Problem11725 {
 
     static int N;
     static List<List<Integer>> adjList = new ArrayList<>();
