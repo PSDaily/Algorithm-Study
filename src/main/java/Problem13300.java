@@ -3,10 +3,13 @@
 // 같은 학년(1명도 가능)
 // 방의 최소 개수
 // K: 한방 최대 인원수
-import java.util.*;
-import java.io.*;
 
-public class Main{
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Problem13300 {
     static int N, K;
     static int[][] darr;
 
