@@ -1,92 +1,87 @@
-import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.StringBuilder;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
-
-class Node {
-    int n;
-    int m;
-
-    public Node(int n, int m) {
-        this.n = n;
-        this.m = m;
-    }
-
-    public int getN() {
-        return n;
-    }
-
-    public int getM() {
-        return m;
-    }
-}
+import java.util.Queue;
 
 public class Problem1926 {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
+        int x = Integer.parseInt(st.nextToken());
+        int y = Integer.parseInt(st.nextToken());
+        int[][] array = new int[x][y];
 
-        int[][] arr = new int[n][m];
-        boolean[][] visited = new boolean[n][m];
-
-        int sum = 0;
-        int maxSum = 0;
-        int count = 0;
-
-        int nodeN = 0;
-        int nodeM = 0;
-
-        Queue<Node> queue = new LinkedList<>();
-        Node node = null;
-
-        for (int i = 0; i < n; i++) {
+        for (int i = 0 ; i < x ; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < m; j++) {
-                arr[i][j] = Integer.parseInt(st.nextToken());
-                visited[i][j] = false;
+            for (int j = 0 ; j < y ; j++) {
+                array[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                sum  = 0;
-                if (arr[i][j] == 1 && !visited[i][j]) {
+        int z;
+        int count = 0;
+        int extent = 0;
+        int max_extent = 0;
+        Queue<int[]> queue = new LinkedList<>();
+        int[] arr = new int[2];
+
+        for (int i = 0 ; i < x ; i++) {
+            for (int j = 0 ; j < y ; j++) {
+                z = array[i][j];
+//                System.out.println("array[" + i + "][" + j + "] = " + z);
+//                System.out.println("count: " + count);
+                extent = 0;
+                if (z  == 1){
                     count++;
-                    visited[i][j] = true;
-                    queue.add(new Node(i, j));
-                    while (!queue.isEmpty()) {
-                        node = queue.remove();
-                        sum++;
-                        nodeN = node.getN();
-                        nodeM = node.getM();
-
-                        sum++;
-                        if (nodeN < n-1 && arr[nodeN+1][nodeM] == 1 && !visited[nodeN+1][nodeM] ) {
-                            queue.add(new Node(i+1, j));
+                    extent++;
+                    queue.add(new int[]{i, j});
+                    array[i][j] = 0;
+                    while(!queue.isEmpty()){
+                        arr = queue.poll();
+                        if(arr[0] < x-1 && array[arr[0]+1][arr[1]] == 1){
+                            queue.add(new int[]{arr[0]+1, arr[1]});
+                            array[arr[0]+1][arr[1]] = 0;
+                            extent++;
                         }
-
-                        if (nodeM < m-1 &&arr[nodeN][nodeM+1] ==1 && !visited[nodeN][nodeM+1] ) {
-                            queue.add(new Node(nodeN, nodeM+1));
+                        if(arr[1] < y-1 && array[arr[0]][arr[1]+1] == 1){
+                            queue.add(new int[]{arr[0], arr[1]+1});
+                            array[arr[0]][arr[1]+1] = 0;
+                            extent++;
+                        }
+                        if(arr[0]-1 >= 0 && array[arr[0]-1][arr[1]] == 1){
+                            queue.add(new int[]{arr[0]-1, arr[1]});
+                            array[arr[0]-1][arr[1]] = 0;
+                            extent++;
+                        }
+                        if(arr[1]-1 >= 0 && array[arr[0]][arr[1]-1] == 1){
+                            queue.add(new int[]{arr[0], arr[1]-1});
+                            array[arr[0]][arr[1]-1] = 0;
+                            extent++;
                         }
                     }
-                    if (sum > maxSum) {
-                        maxSum = sum;
+//                    System.out.println(extent);
+
+                    if(extent > max_extent){
+                        max_extent = extent;
                     }
                 }
             }
         }
-        bw.write(String.valueOf(count)+"\n");
-        bw.write(String.valueOf(maxSum));
+        StringBuilder sb = new StringBuilder();
+
+        bw.write(sb.append(count).append("\n").append(max_extent).append("\n").toString());
         bw.flush();
         bw.close();
-    }
 
+
+
+
+    }
 }
