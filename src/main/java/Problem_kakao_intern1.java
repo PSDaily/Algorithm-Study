@@ -1,12 +1,7 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Stack;
-import java.util.StringTokenizer;
 
-public class Problem3015 {
+public class Problem_kakao_intern1 {
     static int N;
     static int[] arr;
 
