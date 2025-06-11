@@ -27,7 +27,6 @@ class ProblemKakaoWinterInternship2 {
          Set<Integer> vertices = new HashSet<>();
 
         //given
-//        int max=0;
 
         int[] result=new int[4];
 
@@ -85,20 +84,7 @@ class ProblemKakaoWinterInternship2 {
                 gnode=i;
                 break;
             }
-      /*      // 해당 노드로부터 탐색시작했을 때 모든 노드가 방문되어야함
-            boolean[] visited=new boolean[N+1];
-            boolean isGnode=true;
-            bfs2(i, visited);
-            for(int j=1;j<=N;j++)
-            {
-                if(!visited[j])
-                {
-                    isGnode=false;
-                    break;
-                }
-            }
-            if(!isGnode)continue;
-            gnode=i;*/
+
         }
 
         boolean[] isVisited2=new boolean[N+1];
