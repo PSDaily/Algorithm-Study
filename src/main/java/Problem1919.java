@@ -34,7 +34,7 @@ public class Problem1919{
                 continue;
             }
 
-            char[] temp = new char[voca1.length()];
+            char[] temp = new char[voca2.length()];
 
             System.arraycopy(v2, 0, temp, 0, idx);
             System.arraycopy(v2, idx + 1, temp, idx, v2.length - idx - 1);
