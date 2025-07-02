@@ -1,58 +1,47 @@
-// 1~6학년
-// 남/녀
-// 같은 학년(1명도 가능)
-// 방의 최소 개수
-// K: 한방 최대 인원수
 import java.util.*;
 import java.io.*;
 
 public class Main{
-    static int N, K;
-    static int[][] darr;
 
     public static void main(String[] args)throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tokens2 = new StringTokenizer(br.readLine(), " ");
 
-        N = Integer.valueOf(tokens2.nextToken());
-        K = Integer.valueOf(tokens2.nextToken());
-        darr = new int[7][2];
+        int N =Integer.valueOf(br.readLine());
+        String[] results = new String[N];
 
         for(int i=0;i<N;i++)
         {
-            StringTokenizer tokens = new StringTokenizer(br.readLine()," ");
+            StringTokenizer tokens = new StringTokenizer(br.readLine(), " ");
+            String s1 = tokens.nextToken();
+            String s2 = tokens.nextToken();
 
-            int s=Integer.valueOf(tokens.nextToken());
-            int g = Integer.valueOf(tokens.nextToken());
+            char[] carr1 = s1.toCharArray();
+            char[] carr2 = s2.toCharArray();
 
-            darr[g][s]++;
+            Arrays.sort(carr2);
+
+            boolean flag = true;
+            for (int j = 0; j < carr1.length; j++) {
+                if (j == 0 && carr1.length != carr2.length) {
+                    results[i] = "Impossible";
+                    flag = false;
+                    break;
+                }
+                int findIdx = Arrays.binarySearch(carr2, carr1[j]);
+                if (findIdx < 0) {
+                    results[i] = "Impossible";
+                    flag = false;
+                    break;
+                } else {
+                    char[] temp = new char[carr2.length-1];
+                    System.arraycopy(carr2, 0, temp, 0, findIdx);
+                    System.arraycopy(carr2, findIdx + 1, temp, findIdx, carr2.length - findIdx - 1);
+                    carr2 = temp;
+                }
+            }
+            if(flag) results[i] = "Possible";
         }
+        for(String result:results) System.out.println(result);
 
-        //when
-
-        int result=0;
-
-        for(int i=1;i<=6;i++)
-        {
-            int man = darr[i][0];
-            int woman = darr[i][1];
-
-            // man
-            int p1 = man/K;
-            int q1 = man%K;
-
-            result += p1;
-            if(q1 != 0) result++;
-
-
-            //woman
-            int p2 = woman/K;
-            int q2 = woman%K;
-
-            result += p2;
-            if(q2 != 0) result++;
-        }
-
-        System.out.print(result);
     }
 }
