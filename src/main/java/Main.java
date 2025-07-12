@@ -5,44 +5,38 @@ public class Main{
 
     public static void main(String[] args)throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int N =Integer.valueOf(br.readLine());
-        String[] results = new String[N];
-
-        for(int i=0;i<N;i++)
-        {
-            StringTokenizer tokens = new StringTokenizer(br.readLine(), " ");
-            String s1 = tokens.nextToken();
-            String s2 = tokens.nextToken();
-
-            char[] carr1 = s1.toCharArray();
-            char[] carr2 = s2.toCharArray();
-
-            Arrays.sort(carr2);
-            Arrays.sort(carr1);
-
-            // case1: diff length
-            if(carr1.length!=carr2.length) results[i] = "Impossible";
-
-            // case2: same length
-            boolean flag = true;
-
-            // validate same character or not
-            for (int j = 0; j < carr1.length; j++) {
-                if (carr1[j] != carr2[j]) {
-                    results[i] = "Impossible";
-                    flag = false;
-                    break;
-                }
-            }
-
-            if(flag) results[i] = "Possible";
-
+        StringTokenizer tokens = new StringTokenizer(br.readLine(), ",");
+        ArrayList<Object> ls = new ArrayList<>();
+        while (tokens.hasMoreTokens()) {
+           ls.add(Integer.parseInt(tokens.nextToken()));
+        }
+        int[] array = new int[ls.size()];
+        for (int i = 0; i < ls.size(); i++) {
+            array[i] = (int)ls.get(i);
         }
 
 
+    }
+    public static int[] solution(int[] array, int[][] commands) {
 
-        for(String result:results) System.out.println(result);
+        int[] results=new int[commands.length];
+        for(int a=0;a<commands.length;a++)
+        {
+            int i,j,k;
+            i=commands[a][0];
+            j=commands[a][1];
+            k=commands[a][2];
 
+            int[] cArray=new int[array.length-(j-i+1)];
+            System.arraycopy(array,0,cArray,0,i);
+            System.arraycopy(array,j,cArray,i,array.length-j);
+
+            Arrays.sort(cArray);
+
+            results[a]=cArray[k-1];
+        }
+
+        int[] answer = results;
+        return answer;
     }
 }
