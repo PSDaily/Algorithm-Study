@@ -104,3 +104,5 @@ public class Problem5427 {
         return (x == 0 || x == w - 1 || y == 0 || y == h - 1);
     }
 }
+
+// push
