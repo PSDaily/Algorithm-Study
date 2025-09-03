@@ -8,6 +8,7 @@ public class Problem11328 {
 
     public static void main(String[] args)throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb=new StringBuilder();
 
         int N =Integer.valueOf(br.readLine());
         String[] results = new String[N];
@@ -25,7 +26,10 @@ public class Problem11328 {
             Arrays.sort(carr1);
 
             // case1: diff length
-            if(carr1.length!=carr2.length) results[i] = "Impossible";
+            if (carr1.length != carr2.length) {
+                sb.append("Impossible\n");
+                continue;
+            }
 
             // case2: same length
             boolean flag = true;
@@ -33,19 +37,16 @@ public class Problem11328 {
             // validate same character or not
             for (int j = 0; j < carr1.length; j++) {
                 if (carr1[j] != carr2[j]) {
-                    results[i] = "Impossible";
+                    sb.append("Impossible\n");
                     flag = false;
                     break;
                 }
             }
 
-            if(flag) results[i] = "Possible";
+            if(flag) sb.append("Possible\n");
 
         }
 
-
-
-        for(String result:results) System.out.println(result);
-
+        System.out.println(sb);
     }
 }
