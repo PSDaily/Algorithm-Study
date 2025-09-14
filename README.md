@@ -1,5 +1,6 @@
 ## 🌤️ 매일 1문제
-![KakaoTalk_Photo_2025-03-20-11-48-46](https://github.com/user-attachments/assets/1b23a32b-b15b-4e44-9749-4cac774b1054)
+<img width="700" height="533" alt="image" src="https://github.com/user-attachments/assets/d089a133-1ad9-4b9b-9a29-bc1dcb4f41cc" />
+
 
 
 <br/>
@@ -56,6 +57,13 @@
               <img src="https://github.com/seoahS01.png" width="100">
               <br />
               <b>황서아</b>
+            </a>
+        </td>
+        <td style="min-width: 150px;">
+            <a href="https://github.com/mirupio">
+              <img src="https://github.com/mirupio.png" width="100">
+              <br />
+              <b>박정하</b>
             </a>
         </td>
     </tr>
