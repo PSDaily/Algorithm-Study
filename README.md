@@ -1,5 +1,7 @@
 ## 🌤️ 매일 1문제
-<img width="515" alt="스크린샷 2025-03-18 오후 9 30 30" src="https://github.com/user-attachments/assets/141cbf8e-0d4a-4d31-9c72-31d42309ce83" />
+<img width="700" height="533" alt="image" src="https://github.com/user-attachments/assets/d089a133-1ad9-4b9b-9a29-bc1dcb4f41cc" />
+
+
 
 <br/>
 
@@ -55,6 +57,13 @@
               <img src="https://github.com/seoahS01.png" width="100">
               <br />
               <b>황서아</b>
+            </a>
+        </td>
+        <td style="min-width: 150px;">
+            <a href="https://github.com/mirupio">
+              <img src="https://github.com/mirupio.png" width="100">
+              <br />
+              <b>박정하</b>
             </a>
         </td>
     </tr>
