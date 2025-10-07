@@ -6,45 +6,11 @@ public class Main{
     static int[] arr;
 
     public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char[] carr = {'a', 'b', 'c'};
+        char[] carr2 = {'a', 'b', 'c'};
 
-        N= Integer.valueOf(br.readLine());
-        arr = new int[N];
 
-        for(int i=0;i<N;i++)
-        {
-            arr[i]=Integer.valueOf(br.readLine());
-        }
-
-        //when
-        Stack<Pair> stk = new Stack<>();
-        long result = 0;
-        for(int i=0;i<N;i++)
-        {
-            int num = arr[i];
-            int count = 1;
-
-            // 자기보다 작은 값들 == 뒤를 더 이상 못봄
-            while(!stk.isEmpty() && stk.peek().height < num)
-            {
-                Pair p = stk.pop();
-                result += p.count;
-            }
-
-            if(!stk.isEmpty() && stk.peek().height == num)
-            {
-                Pair  p = stk.pop();
-                result += p.count;
-                count += p.count;
-            }
-
-            if(!stk.isEmpty()) result += 1;
-
-            stk.push(new Pair(num, count));
-        }
-
-        System.out.print(result);
-
+        System.out.println(Arrays.binarySearch(carr, carr[0]));
     }
 
     private static class Pair{
