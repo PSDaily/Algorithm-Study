@@ -30,6 +30,7 @@ public class dfsPractice {
         // DFS 실행
         DFS dfs = new DFS();
         System.out.println("DFS 탐색 결과: ");
+        //dfs.dfsStack(1,visited,graph);
         dfs.dfsStack(1,visited,graph);
         // dfs.dfsRecursive(1,visited,graph);
     }
