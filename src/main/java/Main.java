@@ -2,41 +2,24 @@ import java.util.*;
 import java.io.*;
 
 public class Main{
+    static int N;
+    static int[] arr;
 
-    public static void main(String[] args)throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tokens = new StringTokenizer(br.readLine(), ",");
-        ArrayList<Object> ls = new ArrayList<>();
-        while (tokens.hasMoreTokens()) {
-           ls.add(Integer.parseInt(tokens.nextToken()));
-        }
-        int[] array = new int[ls.size()];
-        for (int i = 0; i < ls.size(); i++) {
-            array[i] = (int)ls.get(i);
-        }
+    public static void main(String[] args) throws IOException{
+        char[] carr = {'a', 'b', 'c'};
+        char[] carr2 = {'a', 'b', 'c'};
 
 
+        System.out.println(Arrays.binarySearch(carr, carr[0]));
     }
-    public static int[] solution(int[] array, int[][] commands) {
 
-        int[] results=new int[commands.length];
-        for(int a=0;a<commands.length;a++)
-        {
-            int i,j,k;
-            i=commands[a][0];
-            j=commands[a][1];
-            k=commands[a][2];
+    private static class Pair{
+        int height;
+        int count;
 
-            int[] cArray=new int[array.length-(j-i+1)];
-            System.arraycopy(array,0,cArray,0,i);
-            System.arraycopy(array,j,cArray,i,array.length-j);
-
-            Arrays.sort(cArray);
-
-            results[a]=cArray[k-1];
+        Pair(int h, int c){
+            height=h;
+            count=c;
         }
-
-        int[] answer = results;
-        return answer;
     }
 }

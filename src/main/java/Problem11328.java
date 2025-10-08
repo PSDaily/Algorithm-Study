@@ -1,52 +1,43 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Problem11328 {
+    static int N;
 
-    public static void main(String[] args)throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb=new StringBuilder();
+        N = Integer.valueOf(br.readLine());
 
-        int N =Integer.valueOf(br.readLine());
-        String[] results = new String[N];
-
-        for(int i=0;i<N;i++)
-        {
+        for (int i = 0; i < N; i++) {
             StringTokenizer tokens = new StringTokenizer(br.readLine(), " ");
-            String s1 = tokens.nextToken();
-            String s2 = tokens.nextToken();
+            char[] voca1 = tokens.nextToken().toCharArray();
+            char[] voca2 = tokens.nextToken().toCharArray();
 
-            char[] carr1 = s1.toCharArray();
-            char[] carr2 = s2.toCharArray();
+            int[] arr1 = new int[26];
+            int[] arr2 = new int[26];
 
-            Arrays.sort(carr2);
-            Arrays.sort(carr1);
+            parseAlphabet(voca1, arr1);
+            parseAlphabet(voca2, arr2);
 
-            // case1: diff length
-            if (carr1.length != carr2.length) {
-                sb.append("Impossible\n");
-                continue;
-            }
-
-            // case2: same length
-            boolean flag = true;
-
-            // validate same character or not
-            for (int j = 0; j < carr1.length; j++) {
-                if (carr1[j] != carr2[j]) {
-                    sb.append("Impossible\n");
-                    flag = false;
-                    break;
-                }
-            }
-
-            if(flag) sb.append("Possible\n");
-
+            checkAnagram(arr1, arr2);
         }
+    }
 
-        System.out.println(sb);
+    private static void checkAnagram(int[] arr1, int[] arr2) {
+        for (int i = 0; i < 26; i++) {
+            if (arr1[i] != arr2[i]) {
+                System.out.println("Impossible");
+                return;
+            }
+        }
+        System.out.println("Possible");
+    }
+
+    private static void parseAlphabet(char[] voca, int[] arr) {
+        for (int i = 0; i < voca.length; i++) {
+            arr[voca[i] - 'a']++;
+        }
     }
 }
