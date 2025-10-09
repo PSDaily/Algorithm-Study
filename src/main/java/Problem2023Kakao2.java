@@ -5,8 +5,8 @@ public class Problem2023Kakao2 {
 	static class Solution {
 		public long solution(int cap, int n, int[] deliveries, int[] pickups) {
 			long answer = 0;
-			int dFin = n;
-			int pFin = n;
+			int dFin = n-1;
+			int pFin = n-1;
 			boolean dFindPositiveFirst = true;
 			boolean pFindPositiveFirst = true;
 
@@ -15,7 +15,7 @@ public class Problem2023Kakao2 {
 				pFindPositiveFirst = true;
 
 				int dCap = 0;
-				int i = n-1;
+				int i = dFin;
 				// delivery의 fin 값 구하기
 				while(canDeliveryOrPickupAndInTheRange(cap, dCap, i)){
 					int num = deliveries[i];
@@ -33,7 +33,7 @@ public class Problem2023Kakao2 {
 				}
 				// pickup의 fin값 구하기
 				int pCap = 0;
-				int j = n-1;
+				int j = pFin;
 				// delivery의 fin 값 구하기
 				while(canDeliveryOrPickupAndInTheRange(cap, pCap, j)){
 					int num = pickups[j];
