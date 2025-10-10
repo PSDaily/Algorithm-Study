@@ -23,6 +23,25 @@ public class DFS {
         }
     }
 
+    void dfsStack2(int start, boolean[] visited, List<List<Integer>> graph){
+        Stack<Integer> stack = new Stack<>();
+        stack.push(start);
+        visited[start] = true; // 스택에 넣을 때 방문 처리
+
+        while(!stack.isEmpty()){
+            int node = stack.pop();
+            System.out.print(node + " "); // 방문 출력
+
+            for(int next : graph.get(node)){
+                if(!visited[next]){
+                    visited[next] = true;  // push하기 전에 방문 표시
+                    stack.push(next);
+                }
+            }
+        }
+    }
+
+
     void dfsRecursive(int node, boolean[] visited, List<List<Integer>> graph){
         visited[node] = true; // 현재 노드 방문 처리
         System.out.print(node + " "); // 방문 출력
