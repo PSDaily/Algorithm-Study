@@ -1,9 +1,9 @@
-package Baekjoon.codingdodo.dfs;
+package Baekjoon.codingdodo.bfs;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class dfsPractice {
+public class bfsPractice {
     public static void main(String[] args) {
         // 그래프 크기(정점 개수)
         int n = 5;
@@ -14,7 +14,7 @@ public class dfsPractice {
             graph.add(new ArrayList<>());
         }
 
-        // 간선 추가(양방향 그래프)
+        // 간선 추가 (양방향 그래프)
         graph.get(1).add(2);
         graph.get(1).add(4);
         graph.get(2).add(1);
@@ -25,13 +25,11 @@ public class dfsPractice {
         graph.get(5).add(4);
 
         // 방문 배열
-        boolean[] visited = new boolean[n+1];
+        boolean[] visited = new boolean[n + 1];
 
-        // DFS 실행
-        DFS dfs = new DFS();
-        System.out.println("DFS 탐색 결과: ");
-        //dfs.dfsStack(1,visited,graph);
-        dfs.dfsStack(1,visited,graph);
-        // dfs.dfsRecursive(1,visited,graph);
+        // BFS 실행
+        BFS bfs = new BFS();
+        System.out.println("BFS 탐색 결과:");
+        bfs.bfsQueue(1, visited, graph);
     }
 }
