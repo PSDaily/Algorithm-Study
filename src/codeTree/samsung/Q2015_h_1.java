@@ -3,7 +3,7 @@ package codeTree.samsung;
 import java.io.*;
 import java.util.*;
 
-public class Q2025_h_1 {
+public class Q2015_h_1 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

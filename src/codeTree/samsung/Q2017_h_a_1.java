@@ -3,7 +3,7 @@ package codeTree.samsung;
 import java.util.*;
 import java.io.*;
 
-public class Q2017_h_1 {
+public class Q2017_h_a_1 {
     static char[][] graph;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

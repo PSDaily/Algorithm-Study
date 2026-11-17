@@ -3,7 +3,7 @@ package codeTree.samsung;
 import java.io.*;
 import java.util.*;
 
-public class Q2017_s_1 {
+public class Q2017_h_m_1 {
     static int n;
     static int[][] graph;
     static int min = Integer.MAX_VALUE;
