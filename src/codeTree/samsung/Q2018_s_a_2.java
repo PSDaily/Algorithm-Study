@@ -3,7 +3,7 @@ package codeTree.samsung;
 import java.io.*;
 import java.util.*;
 
-public class Q2018_s_2 {
+public class Q2018_s_a_2 {
     static int[][] graph;
     static int m;
     static List<int[]> hospitals, people;

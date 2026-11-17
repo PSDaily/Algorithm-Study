@@ -3,7 +3,7 @@ package codeTree.samsung;
 import java.util.*;
 import java.io.*;
 
-public class Q2018_h_2 {
+public class Q2018_h_m_2 {
     static int[][] graph;
     static int[] dRow = {-1,1,0,0};
     static int[] dCol = {0,0,-1,1};

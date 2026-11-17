@@ -3,7 +3,7 @@ package codeTree.samsung;
 import java.util.*;
 import java.io.*;
 
-public class Q2021_s_1 {
+public class Q2021_s_m_1 {
     static int n;
     static int[][] graph;
     // 위, 왼, 오, 아래
